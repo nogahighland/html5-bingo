@@ -11,7 +11,7 @@ app.controller('BingoCtrl', function($scope) {
 				return;
 			}
 			var num = this.current * 1;
-			if (!_.isNaN(num) && num < 1 || num > 75) {
+			if (_.isNaN(num) || num < 1 || num > 75) {
 				return;
 			}
 			var tempList = this.chosen;

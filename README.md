@@ -7,10 +7,10 @@
 - Precondition
 	- Latest grunt & bower are installed.
 - usage
-	```shell
-	$ git clone https://github.com/nogahighland/html5-bingo && cd html5-bingo
-	$ bower install && npm install
-	$ grunt
-	Running "connect:livereload" (connect) task
-	Started connect web server on http://0.0.0.0:9000
-	```
+```shell
+$ git clone https://github.com/nogahighland/html5-bingo && cd html5-bingo
+$ bower install && npm install
+$ grunt
+Running "connect:livereload" (connect) task
+Started connect web server on http://0.0.0.0:9000
+```

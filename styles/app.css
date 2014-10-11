@@ -37,6 +37,13 @@ body {
 	-webkit-box-align: center;
 	-webkit-box-pack: center;
 	display: -webkit-box;
+	-webkit-transition:width 0.2s, height 0.2s;
+  transition:width 0.2s, height 0.2s;
+}
+.ball.added {
+  width: 150px;
+  height: 150px;
+  font-size: 54px;
 }
 .ball .glear {
 	position: absolute;
@@ -61,6 +68,7 @@ body {
 	right: 0;
 	position: absolute;
 	font-size: 24px;
+	cursor: pointer;
 }
 .remove:hover {
 	color: rgb(0, 180, 193);

@@ -20,17 +20,12 @@ app.controller('BingoCtrl', function($scope, $timeout) {
 			if (_.isNaN(num) || num < 1 || num > 75) {
 				return;
 			}
-
-			var isExist = false;
-			_.each(this.chosen, function(ball) {
-				if (ball.num == num) {
-					isExist = true;
-				}
+			var isExist = _.find(this.chosen, function(ball) {
+				return ball.num === num;
 			});
 			if (isExist) {
 				return;
 			}
-
 			var ball = { num: this.current * 1};
 			this.chosen.push(ball);
 			sessionStorage['chosen'] = JSON.stringify(this.chosen);

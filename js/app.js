@@ -1,10 +1,16 @@
 'use strict'
 
+var chosen = [];
+try {
+	chosen = JSON.parse(sessionStorage['chosen']);
+} catch(e) {
+}
+
 var app = angular.module('app', []);
 app.controller('BingoCtrl', function($scope) {
 	_.assign($scope, {
 		current : "",
-		chosen : [],
+		chosen : chosen,
 		isFinished : false,
 		add : function() {
 			if (!this.current) {
@@ -19,15 +25,14 @@ app.controller('BingoCtrl', function($scope) {
 			tempList = _.uniq(tempList), function(num) {
 				return num;
 			};
-			tempList = _.sortBy(tempList, function(num) {
-				return num;
-			});
 			this.chosen = tempList;
+			sessionStorage['chosen'] = JSON.stringify(this.chosen);
 		},
 		remove : function() {
 			_.remove(this.chosen, _.bind(function(num) {
 				return this.num == num;
-			}, this)); 
+			}, this));
+			sessionStorage['chosen'] = JSON.stringify(this.chosen);
 		},
 		handleKeyDown : function(e) {
 			if (e.which == 13) { //enter

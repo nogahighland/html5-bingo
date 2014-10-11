@@ -8,14 +8,16 @@
 <body>
 	<div ng-controller="BingoCtrl">
 		<input autofocus type="text" max="75" min="1" id="current" ng-model="current" ng-keydown="handleKeyDown($event)" class="glow-text"/>
-		<div ng-repeat="num in chosen" class="ball-box">
-			<div class="ball">
-				<div class="glear"></div>
-				<span class="number glow-text">{{num}}</span>
+		<div class='boll-cotainer'>
+			<div ng-repeat="num in chosen" class="ball-box">
+				<div class="ball">
+					<div class="glear"></div>
+					<span class="number glow-text">{{num}}</span>
+				</div>
+				<div ng-click="remove()" class="remove glow-text">×</div>
 			</div>
-			<div ng-click="remove()" class="remove glow-text">×</div>
+			<div class="clear"></div>
 		</div>
-		<div class="clear"></div>
 	</div>
 	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
 	<script type="text/javascript" src="bower_components/lodash/dist/lodash.min.js"></script>

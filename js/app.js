@@ -6,7 +6,7 @@ try {
 } catch(e) {
 }
 
-var app = angular.module('app');
+var app = angular.module('app', []);
 app.controller('BingoCtrl', function($scope) {
 	_.assign($scope, {
 		current : "",

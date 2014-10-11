@@ -7,7 +7,7 @@ try {
 }
 
 var app = angular.module('app', []);
-app.controller('BingoCtrl', function($scope) {
+app.controller('BingoCtrl', function($scope, $timeout) {
 	_.assign($scope, {
 		current : "",
 		chosen : chosen,
@@ -20,17 +20,31 @@ app.controller('BingoCtrl', function($scope) {
 			if (_.isNaN(num) || num < 1 || num > 75) {
 				return;
 			}
-			var tempList = this.chosen;
-			tempList.push(this.current * 1);
-			tempList = _.uniq(tempList), function(num) {
-				return num;
-			};
-			this.chosen = tempList;
+
+			var isExist = false;
+			_.each(this.chosen, function(ball) {
+				if (ball.num == num) {
+					isExist = true;
+				}
+			});
+			if (isExist) {
+				return;
+			}
+
+			var ball = { num: this.current * 1};
+			this.chosen.push(ball);
 			sessionStorage['chosen'] = JSON.stringify(this.chosen);
+
+			$timeout(function() {
+				ball.class = 'added';
+				$timeout(function(argument) {
+					ball.class = '';
+				}, 200);
+			}, 100);
 		},
-		remove : function() {
-			_.remove(this.chosen, _.bind(function(num) {
-				return this.num == num;
+		remove : function(num) {
+			_.remove(this.chosen, _.bind(function(obj) {
+				return num == obj.num;
 			}, this));
 			sessionStorage['chosen'] = JSON.stringify(this.chosen);
 		},
